@@ -134,19 +134,26 @@ test.describe('Portfolio', () => {
     expect(scrollPosition).toBeLessThan(100);
   });
 
-  /**
+    /**
    * Comprueba que existe un enlace para descargar el CV.
    */
   test('muestra el enlace de descarga del CV', async ({ page }) => {
     await page.goto('/');
 
-    // Buscamos enlaces que tengan el atributo download esperado.
-    const resumeLinks = page.locator(
-      'a[download="Cristian_Martinez_CV.pdf"]'
-    );
+    const navbar = page.locator('.navbar');
 
-    // No imponemos una cantidad exacta.
-    // Solo verificamos que exista al menos uno.
-    await expect(resumeLinks.first()).toBeVisible();
+    await expect(navbar).toBeVisible();
+
+    const resumeLink = navbar.getByRole('link', {
+      name: 'Resume',
+      exact: true,
+    });
+
+    await expect(resumeLink).toBeVisible();
+
+    await expect(resumeLink).toHaveAttribute(
+      'download',
+      'Cristian_Martinez_CV.pdf'
+    );
   });
 });
