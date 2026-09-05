@@ -1,0 +1,54 @@
+name: CI - Tests & Build
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    name: Tests & Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      # Descarga el código del repositorio
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Configura Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      # Instala exactamente las dependencias del package-lock.json
+      - name: Install dependencies
+        run: npm ci
+
+      # Ejecuta las pruebas unitarias/integración con Vitest
+      - name: Run Vitest
+        run: npm run test:run
+
+      # Instala los navegadores necesarios para Playwright
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      # Ejecuta las pruebas E2E
+      - name: Run Playwright
+        run: npx playwright test
+
+      # Verifica que la aplicación pueda compilarse para producción
+      - name: Build application
+        run: npm run build
+
+      # Guarda el reporte de Playwright si las pruebas terminan
+      - name: Upload Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

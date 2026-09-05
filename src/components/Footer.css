@@ -1,0 +1,1 @@
+.footer{position:relative;z-index:3;max-width:1280px;margin:0 auto;padding:28px clamp(20px,6vw,88px) 40px;border-top:1px solid rgba(88,242,223,.1);color:var(--text-dim);font:500 9px var(--font-mono);letter-spacing:.1em;text-transform:uppercase;text-align:center}.footer::before{content:'// END OF TRANSMISSION';display:block;color:var(--cyan);margin-bottom:9px}

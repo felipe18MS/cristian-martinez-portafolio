@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Production build
+dist/
+
+# Test coverage
+coverage/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Generated JavaScript/declaration files
+vite.config.js
+vite.config.d.ts
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local configuration
+*.local
+.vscode/*
+!.vscode/extensions.json
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
