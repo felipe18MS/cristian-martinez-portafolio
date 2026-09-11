@@ -6,18 +6,6 @@ import { useScrollProgressRef } from '../hooks/useScrollProgressRef';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import './Scene3D.css';
 
-function supportsWebGL(): boolean {
-  try {
-    const canvas = document.createElement('canvas');
-
-    return Boolean(
-      canvas.getContext('webgl2') ||
-      canvas.getContext('webgl')
-    );
-  } catch {
-    return false;
-  }
-}
 
 export default function Scene3D() {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -33,14 +21,26 @@ export default function Scene3D() {
 
     // WebGL es decorativo. Si el navegador/CI no lo soporta,
     // dejamos que el resto de la aplicación siga funcionando.
-    if (!supportsWebGL()) {
-      return;
-    }
-
     const isMobile = window.innerWidth < 768;
 
-    const handles = initScene(container, isMobile);
-    sceneRef.current = handles;
+let handles: SceneHandles;
+
+try {
+  handles = initScene(container, isMobile);
+} catch (error) {
+  if (
+    error instanceof Error &&
+    /WebGL|webgl|renderer/i.test(error.message)
+  ) {
+    return;
+  }
+
+  throw error;
+}
+
+sceneRef.current = handles;
+
+
 
     introRef.current = {
       t: reducedMotion ? 1 : 0,
