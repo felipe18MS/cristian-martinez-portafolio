@@ -6,7 +6,6 @@ import { useScrollProgressRef } from '../hooks/useScrollProgressRef';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import './Scene3D.css';
 
-
 export default function Scene3D() {
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<SceneHandles | null>(null);
@@ -19,29 +18,24 @@ export default function Scene3D() {
     const container = mountRef.current;
     if (!container) return;
 
-    // WebGL es decorativo. Si el navegador/CI no lo soporta,
-    // dejamos que el resto de la aplicación siga funcionando.
     const isMobile = window.innerWidth < 768;
 
-let handles: SceneHandles;
+    let handles: SceneHandles;
 
-try {
-  handles = initScene(container, isMobile);
-} catch (error) {
-  if (
-    error instanceof Error &&
-    /WebGL|webgl|renderer/i.test(error.message)
-  ) {
-    return;
-  }
+    try {
+      handles = initScene(container, isMobile);
+    } catch (error) {
+      if (
+        error instanceof Error &&
+        /WebGL|webgl|renderer/i.test(error.message)
+      ) {
+        return;
+      }
 
-  throw error;
-}
+      throw error;
+    }
 
-sceneRef.current = handles;
-
-
-
+    sceneRef.current = handles;
     introRef.current = {
       t: reducedMotion ? 1 : 0,
       done: reducedMotion,
@@ -102,7 +96,9 @@ sceneRef.current = handles;
 
       const targetY =
         LAYERS[0].y -
-        p * (LAYERS[0].y - LAYERS[LAYERS.length - 1].y);
+        p *
+          (LAYERS[0].y -
+            LAYERS[LAYERS.length - 1].y);
 
       const bob = reducedMotion
         ? 0
@@ -165,7 +161,8 @@ sceneRef.current = handles;
         const cycle = 0.045;
 
         scanPlane.position.y =
-          bottomY + (((t * cycle) % 1) * span);
+          bottomY +
+          (((t * cycle) % 1) * span);
       }
 
       renderer.render(scene, camera);

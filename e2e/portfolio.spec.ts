@@ -7,16 +7,16 @@ import { test, expect } from '@playwright/test';
  * desde el punto de vista de un usuario real.
  */
 
-test.beforeEach(async ({ page }) => {
-  page.on('pageerror', error => {
-    console.error('[PAGE ERROR]', error.message);
-    console.error(error.stack);
-  });
+// test.beforeEach(async ({ page }) => {
+//   page.on('pageerror', error => {
+//     console.error('[PAGE ERROR]', error.message);
+//     console.error(error.stack);
+//   });
 
-  page.on('console', message => {
-    console.log(`[BROWSER ${message.type()}]`, message.text());
-  });
-});
+//   page.on('console', message => {
+//     console.log(`[BROWSER ${message.type()}]`, message.text());
+//   });
+// });
 
 test.describe('Portfolio', () => {
   /**
