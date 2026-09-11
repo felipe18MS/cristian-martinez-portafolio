@@ -44,6 +44,10 @@ jobs:
       - name: Build application
         run: npm run build
 
+      # Construye la imagen Docker
+      - name: Build Docker image
+        run: docker build -t cristian-portfolio .
+
       # Guarda el reporte de Playwright si las pruebas terminan
       - name: Upload Playwright report
         if: ${{ !cancelled() }}

@@ -21,7 +21,7 @@ export default function Hero() {
 
       <div className="hero-inner">
         <div className="hero-system-line"><span /> AVAILABLE FOR OPPORTUNITIES <span /></div>
-        <p className="hero-eyebrow">Full Stack Web Developer</p>
+        <p className="hero-eyebrow">{PROFILE.role}</p>
         <h1 className="hero-name" aria-label="Cristian Felipe Martínez Sánchez"><span>Cristian Felipe</span>
         <br /> Martínez Sánchez</h1>
         <p className="hero-role">{PROFILE.tagline}</p>

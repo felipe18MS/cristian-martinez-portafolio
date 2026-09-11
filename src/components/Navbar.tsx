@@ -7,14 +7,24 @@ interface NavbarProps {
   activeSection: SectionId;
   onNavigate: (id: SectionId) => void;
   onOpenMenu: () => void;
+  menuOpen: boolean;
 }
 
 const NAV_IDS = SECTION_IDS.filter((id) => id !== 'hero');
 
-export default function Navbar({ activeSection, onNavigate, onOpenMenu }: NavbarProps) {
+export default function Navbar({
+  activeSection,
+  onNavigate,
+  onOpenMenu,
+  menuOpen,
+}: NavbarProps) {
   return (
-    <nav className="navbar">
-      <button className="navbar-mark" onClick={() => onNavigate('hero')}>
+    <nav className="navbar" aria-label="Main navigation">
+      <button
+        className="navbar-mark"
+        onClick={() => onNavigate('hero')}
+        aria-label="Go to home"
+      >
         C<span>·</span>M
       </button>
 
@@ -28,12 +38,23 @@ export default function Navbar({ activeSection, onNavigate, onOpenMenu }: Navbar
             {id.charAt(0).toUpperCase() + id.slice(1)}
           </button>
         ))}
-        <a className="btn" href={cvUrl} download="Cristian_Martinez_CV.pdf">
+
+        <a
+          className="btn"
+          href={cvUrl}
+          download="Cristian_Martinez_CV.pdf"
+        >
           <Download size={15} /> Resume
         </a>
       </div>
 
-      <button className="navbar-menu-btn" onClick={onOpenMenu} aria-label="Open menu">
+      <button
+        className="navbar-menu-btn"
+        onClick={onOpenMenu}
+        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={menuOpen}
+        aria-controls="mobile-navigation"
+      >
         <Menu size={24} />
       </button>
     </nav>

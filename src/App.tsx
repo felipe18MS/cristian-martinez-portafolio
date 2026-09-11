@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Scene3D from './components/Scene3D';
 import Navbar from './components/Navbar';
 import MobileMenu from './components/MobileMenu';
@@ -19,15 +19,50 @@ export default function App() {
 
   const navigate = (id: SectionId) => {
     setMenuOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [menuOpen]);
 
   return (
     <div className="portfolio-root">
       <Scene3D />
-      <LayerNav activeSection={activeSection} onNavigate={navigate} />
-      <Navbar activeSection={activeSection} onNavigate={navigate} onOpenMenu={() => setMenuOpen(true)} />
-      {menuOpen && <MobileMenu onNavigate={navigate} onClose={() => setMenuOpen(false)} />}
+
+      <LayerNav
+        activeSection={activeSection}
+        onNavigate={navigate}
+      />
+
+      <Navbar
+        activeSection={activeSection}
+        onNavigate={navigate}
+        onOpenMenu={() => setMenuOpen(true)}
+        menuOpen={menuOpen}
+      />
+
+      {menuOpen && (
+        <MobileMenu
+          onNavigate={navigate}
+          onClose={() => setMenuOpen(false)}
+        />
+      )}
 
       <main className="page">
         <Hero />

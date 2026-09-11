@@ -26,23 +26,22 @@ export const SECTION_IDS: SectionId[] = ['hero', 'about', 'experience', 'skills'
 export const PROFILE = {
   name: 'Cristian Felipe Martínez Sánchez',
   role: 'Full Stack Web Developer',
-  tagline: 'Building layered, maintainable web systems — Vue 3 interfaces on top of C# / .NET APIs and SQL Server.',
-  location: 'Florencia, Huila, Colombia',
-  address: 'Brisas Bajas, Florencia, 180001, Colombia',
+  tagline:
+    'Building layered, maintainable web systems — Vue 3 interfaces on top of C# / .NET APIs and SQL Server.',
+  location: 'Florencia, Caquetá, Colombia',
   email: 'cristianmartinez4002@gmail.com',
   phone: '+57 311 562 6350',
   phoneHref: '+573115626350',
 };
 
 export const ABOUT_TEXT =
-  "I'm a full stack developer with about two and a half years building and maintaining enterprise " +
-  'web applications — mostly Vue 3 and Quasar on the frontend, C# and .NET Framework underneath. ' +
-  'I care about clean, modular code: layered architecture, separation of concerns, and interfaces ' +
-  "that hold up as a product grows. I work in Agile teams, ship real business features, and I'm " +
-  'always picking up something new.';
+  "I'm a Full Stack Web Developer with 2.5+ years of professional experience building and maintaining enterprise web applications. " +
+  'My core stack includes Vue 3, Composition API and Quasar on the frontend, with C#, .NET Framework, REST APIs and SQL Server on the backend. ' +
+  'I focus on clean, modular code, layered architecture and separation of concerns, while delivering maintainable solutions for real business needs. ' +
+  "I work effectively in Agile teams and continuously expand my technical skills.";
 
 export const ABOUT_FACTS = [
-  { label: 'Experience', value: '~2.5 years, professional' },
+  { label: 'Experience', value: '2.5+ years professional' },
   { label: 'Based in', value: 'Florencia, Huila, Colombia' },
   { label: 'Languages', value: 'Spanish (native), English' },
   { label: 'Practices', value: 'Clean Code, SOLID, Scrum' },

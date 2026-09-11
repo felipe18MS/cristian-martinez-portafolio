@@ -39,8 +39,7 @@ describe("Hero", () => {
   test("muestra la ubicación del desarrollador", () => {
     render(<Hero />);
 
-    const location = screen.getByText(/florencia, huila, colombia/i);
-
+    const location = screen.getByText(/florencia, caquetá, colombia/i);
     expect(location).toBeInTheDocument();
   });
 

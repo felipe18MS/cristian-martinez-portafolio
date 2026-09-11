@@ -1,0 +1,8 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cristian-portfolio
+    ports:
+      - "8080:80"

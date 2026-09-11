@@ -17,21 +17,18 @@ describe("Navbar", () => {
         activeSection="hero"
         onNavigate={onNavigate}
         onOpenMenu={onOpenMenu}
+        menuOpen={false}
       />,
     );
 
     // Verificamos algunas opciones visibles.
-    expect(
-      screen.getByRole("button", { name: /about/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /about/i })).toBeInTheDocument();
 
     expect(
       screen.getByRole("button", { name: /experience/i }),
     ).toBeInTheDocument();
 
-    expect(
-      screen.getByRole("button", { name: /skills/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /skills/i })).toBeInTheDocument();
   });
 
   test("permite navegar a una sección", async () => {
@@ -49,6 +46,7 @@ describe("Navbar", () => {
         activeSection="hero"
         onNavigate={onNavigate}
         onOpenMenu={onOpenMenu}
+        menuOpen={false}
       />,
     );
 
@@ -77,12 +75,14 @@ describe("Navbar", () => {
         activeSection="experience"
         onNavigate={onNavigate}
         onOpenMenu={onOpenMenu}
+        menuOpen={false}
       />,
     );
 
     // El logo es un botón.
+    
     const logoButton = screen.getByRole("button", {
-      name: /c·m/i,
+      name: /go to home/i,
     });
 
     // Hacemos clic.
@@ -105,6 +105,7 @@ describe("Navbar", () => {
         activeSection="hero"
         onNavigate={onNavigate}
         onOpenMenu={onOpenMenu}
+        menuOpen={false}
       />,
     );
 
@@ -127,6 +128,7 @@ describe("Navbar", () => {
         activeSection="experience"
         onNavigate={vi.fn()}
         onOpenMenu={vi.fn()}
+        menuOpen={false}
       />,
     );
 
@@ -142,11 +144,7 @@ describe("Navbar", () => {
   test("muestra el enlace de descarga del CV", () => {
     // Renderizamos Navbar.
     render(
-      <Navbar
-        activeSection="hero"
-        onNavigate={vi.fn()}
-        onOpenMenu={vi.fn()}
-      />,
+      <Navbar activeSection="hero" onNavigate={vi.fn()} onOpenMenu={vi.fn()} menuOpen={false} />,
     );
 
     // Buscamos el enlace de descarga.
@@ -158,9 +156,6 @@ describe("Navbar", () => {
     expect(resumeLink).toBeInTheDocument();
 
     // Verificamos que sea una descarga.
-    expect(resumeLink).toHaveAttribute(
-      "download",
-      "Cristian_Martinez_CV.pdf",
-    );
+    expect(resumeLink).toHaveAttribute("download", "Cristian_Martinez_CV.pdf");
   });
 });
