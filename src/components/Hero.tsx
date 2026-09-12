@@ -20,7 +20,7 @@ export default function Hero() {
       </div>
 
       <div className="hero-inner">
-        <div className="hero-system-line"><span /> AVAILABLE FOR OPPORTUNITIES <span /></div>
+        <div className="hero-system-line"><span /> AVAILABLE FOR OPPORTUNITIES INMEDIATELY <span /></div>
         <p className="hero-eyebrow">{PROFILE.role}</p>
         <h1 className="hero-name" aria-label="Cristian Felipe Martínez Sánchez"><span>Cristian Felipe</span>
         <br /> Martínez Sánchez</h1>
