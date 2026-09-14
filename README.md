@@ -1,75 +1,100 @@
 # Cristian Martínez — Portfolio
 
-Portafolio 3D interactivo construido con **React + TypeScript + Three.js**, con Vite como bundler.
+Portafolio profesional 3D interactivo desarrollado con **React, TypeScript,
+Three.js y Vite**.
 
-## Concepto
+El proyecto combina desarrollo frontend, testing automatizado, containerización,
+CI/CD, versionado de aplicaciones y deployment.
 
-La escena 3D no es decorativa: representa literalmente una arquitectura por capas
-(Interfaz → Lógica → Datos → Fundación). Al hacer scroll, la cámara desciende a través
-de las capas, y cada nodo flotante usa una forma "tech" distinta según la capa:
+Además de funcionar como portfolio profesional, este proyecto representa una
+etapa de expansión de mi stack técnico hacia tecnologías como React, TypeScript,
+Three.js y prácticas DevOps.
 
-- **Interfaz** → símbolos de código `</>`
-- **Lógica** → nodos de red/API (anillo + hub)
-- **Datos** → íconos de base de datos (cilindros apilados)
-- **Fundación** → racks de servidor
+---
 
-Cada capa además tiene trazas de circuito estilo PCB y un barrido holográfico que
-recorre lentamente todo el stack.
+## 🌐 Demo
 
-## Cómo correrlo
+### Portfolio online
 
-Necesitas [Node.js](https://nodejs.org) 18 o superior instalado.
+👉 https://felipe18ms.github.io/cristian-martinez-portafolio/
 
-```bash
-npm install
-npm run dev
-```
+### Repositorio
 
-Abre la URL que muestra la terminal (normalmente `http://localhost:5173`).
+👉 https://github.com/felipe18MS/cristian-martinez-portafolio
 
-Para generar la build de producción:
+---
 
-```bash
-npm run build
-npm run preview
-```
+# 👨‍💻 Sobre mí
 
-## Estructura del proyecto
+Soy **Cristian Felipe Martínez Sánchez**, Desarrollador Web Full Stack con
+experiencia profesional en el desarrollo de aplicaciones web empresariales.
 
-```
-src/
-  assets/          Foto de perfil y CV (PDF) — reemplázalos por los tuyos con el mismo nombre
-  data/            content.ts — todo el texto y datos del sitio, en un solo lugar
-  hooks/           Hooks reutilizables (scroll, sección activa, reduced motion)
-  three/           Lógica de Three.js: escena, cámara, luces (scene.ts) y formas 3D (shapes.ts)
-  components/      Un componente + su .css por sección de la página
-  App.tsx          Ensambla todos los componentes
-  main.tsx         Punto de entrada de React
-  index.css        Estilos globales compartidos
-  styles/tokens.css  Paleta de colores y tipografías (variables CSS)
-```
+Mi experiencia profesional se ha centrado principalmente en el desarrollo
+frontend y backend, trabajando con arquitecturas por capas, APIs REST,
+bases de datos, integración de servicios y procesos empresariales.
 
-## Editar el contenido
+Mi stack profesional principal está basado en **Vue 3, JavaScript, Quasar
+Framework, C#, .NET Framework, ASP.NET Web API, Dapper y SQL Server**.
 
-Casi todo el texto del sitio vive en **`src/data/content.ts`** — nombre, biografía,
-experiencia, skills, educación y datos de contacto. No necesitas tocar los componentes
-para actualizar el contenido.
+También he trabajado con procesos relacionados con **facturación electrónica,
+nómina electrónica, generación y procesamiento de XML e integración con
+servicios de la DIAN**.
 
-Para cambiar la foto o el CV, reemplaza los archivos en `src/assets/` manteniendo el
-mismo nombre (`profile.jpg`, `cv.pdf`), o actualiza el import correspondiente en
-`Hero.tsx` / `Navbar.tsx` / `Contact.tsx` / `MobileMenu.tsx`.
+Este portfolio representa además una etapa de expansión de mis conocimientos
+hacia **React, TypeScript, Three.js, testing automatizado, Docker y CI/CD**.
 
-## Paleta
+---
 
-| Variable | Uso |
-|---|---|
-| `--cyan` `#4ed9c8` | Capa de interfaz / acciones primarias |
-| `--violet` `#9c86f5` | Capa de lógica / backend |
-| `--amber` `#e8a23d` | Capa de datos / fundación |
-| `--bg` `#0b121d` | Fondo |
+# 💼 Experiencia profesional
 
-## Próximos pasos sugeridos
+## Frontend
 
-- Agregar enlaces reales de GitHub / LinkedIn en `content.ts` y en el `Contact.tsx`.
-- Desplegar en Vercel o Netlify (`npm run build` genera la carpeta `dist/`).
-- Si quieres una versión en Vue 3 / Nuxt para comparar y aprender, pídemela.
+- Vue 3
+- JavaScript
+- Quasar Framework
+- HTML5
+- CSS3
+- Desarrollo de interfaces web
+- Componentización
+- Consumo e integración de APIs REST
+
+## Backend
+
+- C#
+- .NET Framework
+- ASP.NET Web API
+- APIs RESTful
+- Arquitectura por capas
+- Lógica de negocio
+- Servicios backend
+- Integración entre frontend y backend
+
+## Acceso a datos
+
+Experiencia trabajando con **SQL Server** y acceso a datos mediante
+**Dapper**, utilizando consultas SQL y separación de responsabilidades
+dentro de arquitecturas por capas.
+
+Arquitectura conceptual:
+
+```text
+┌─────────────────────────┐
+│       Controller        │
+│     ASP.NET Web API     │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│    Lógica de negocio    │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│    Acceso a datos       │
+│        Dapper           │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│       SQL Server        │
+└─────────────────────────┘
